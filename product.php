@@ -79,8 +79,12 @@
 		<h1>Submit New Product</h1>
 		
 		<form method="post" action="" enctype="multipart/form-data" >
+<<<<<<< HEAD
 			<label>Name of product</label><br><input type="text" name="name"><br>
 			<label>Product description</label><br><textarea name="descrip"></textarea><br>
+=======
+			<label>Name of product</label><br><input type="text" name="name" placeholder='Naruto Mug'><br>
+>>>>>>> 0396940a34ab3c1b869cfee922490bb2e8247078
 			<label>Material to be made out of</label><br>
 			<select name="material">
 			<?php
@@ -90,8 +94,8 @@
 				}
 			?>	
 			</select><br>
-			<label>Price to sell at</label><br><input type="number" step="any" name="price"><br>
-			<label>Categories/Tags</label><br><input type="text" name="categories"><br>
+			<label>Price to sell at</label><br><input type="number" step="any" name="price" placeholder='$'><br>
+			<label>Categories/Tags</label><br><input type="text" name="categories" placeholder='E.g. mug, naruto, coffee'><br>
 			<label>Model File</label><br><input type="file" name="model"><br><br>
 			<input type="submit" value="Submit Design">
 		</form>

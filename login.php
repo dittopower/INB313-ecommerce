@@ -24,6 +24,7 @@
 		}//if returns empty
 		
 	}else if (isset($_POST['logout'])){
+		$_SESSION = array();
 		session_destroy();
 	}
 	
