@@ -30,7 +30,7 @@
 	
 	
 	if (isset($_SESSION['Email'])){ ?>
-		<a href='<?php echo "./account";?>'>Logged in as: <?php echo $_SESSION['Email']; ?></a>
+		<a href='<?php echo "./account.php";?>'>Logged in as: <?php echo $_SESSION['Email']; ?></a>
 		<form id='userForm' method='POST'>
 			<input name='logout' hidden><input id='logoutbtn' type='submit' value='Logout'>
 	<?php }else{ 
