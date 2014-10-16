@@ -32,6 +32,7 @@
 
 </HEAD>
 <BODY>
+	<?php include_once("analytics.php");?>
 	<div id="header">
 		<img src="./images/CC3D.png" id="logo">CC3D - 1v1 Rust
 		<div id="loginInfo">
