@@ -6,7 +6,7 @@
 	<?php
 		if(isset($_GET['item'])){
 			$id=$_GET['item'];
-			$row = singleRowSQL("SELECT DesignID, Name, Price, Available, Material, Categories FROM designs WHERE DesignID=$id");
+			$row = singleRowSQL("SELECT DesignID, Description, Name, Price, Available, Material, Categories FROM designs WHERE DesignID=$id");
 			if($row == 0){
 				echo "<h2>Product not found :(<br><br>#sadboys2001</h2>";
 			}else{
@@ -15,11 +15,7 @@
 				<h2>' . $row["Name"] . ' - $' . sprintf('%0.2f',$row["Price"]) . '</h2>
 				<p>
 					Material: ' . $row['Material'] . '<br><br>
-					ayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao
-					ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy
-					lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmao
-					ayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmao
-					ayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmaoayy lmao ayy lmao<br><br>
+					'. $row["Description"] .'<br><br>
 					Tags: ' . $row["Categories"] . '
 				</p>
 				<input type="button" value="Add To Cart" onclick="addToCart(' . $id . ');">
@@ -31,28 +27,28 @@
 			if(isset($_SESSION['Email']) && isset($_POST['name']) && isset($_POST['material']) && isset($_POST['price']) && isset($_POST['categories'])){
 				
 				$email = $_SESSION['Email'];
-				$userid = singleSQL("SELECT UserID FROM users WHERE Email='$email'");			
+				$userid = singleSQL("SELECT UserID FROM users WHERE Email='$email'");	
+				$designID = singleSQL('SELECT DesignID FROM designs ORDER BY DesignID DESC LIMIT 1') + 1;				
 				
 				$originalFile = $_FILES["model"]["name"];
 				$tmp = explode('.', $originalFile);
 				$extension = end($tmp);
 				
-				$fileName = $userid . "-" . date("Y-m-d-H-i-s") . "-model." . $extension;
+				$fileName = $designID . $extension;
 				move_uploaded_file($_FILES["model"]["tmp_name"], "./ModelFiles/" . $fileName);
 				
-				$name = $_POST['name'];
+				$name = mysqli_real_escape_string($mysqli,$_POST['name']);
 				$material = $_POST['material'];
 				$price = $_POST['price'];
-				$category = $_POST['categories'];
-									
-				$designID = singleSQL('SELECT DesignID FROM designs ORDER BY DesignID DESC LIMIT 1') + 1;
-				
-				$sql1 = runSQL("INSERT INTO designs (designID, File, Categories, Name, Price, Available, Author, Material) VALUES($designID,'$fileName','$category','$name',$price,'Yes',$userid,'$material')");
+				$category = mysqli_real_escape_string($mysqli,$_POST['categories']);
+				$description = mysqli_real_escape_string($mysqli,$_POST['descrip']);
+
+				$sql1 = runSQL("INSERT INTO designs (designID, Description, Categories, Name, Price, Available, Author, Material) VALUES($designID,'$description','$category','$name',$price,'Yes',$userid,'$material')");
 
 				if($sql1){
 					echo 'Design submitted.';
-				} else { echo 'Something went wrong.' . "INSERT INTO designs (designID, File, Categories, Name, Price, Available, Author, Material) VALUES($designID,'$fileName','$category','$name',$price,'Yes',$userid,'$material')"; }
-					
+				} else { echo 'Something went wrong.' . "INSERT INTO designs (designID, Description, Categories, Name, Price, Available, Author, Material) VALUES($designID,'$description','$category','$name',$price,'Yes',$userid,'$material')"; }
+				
 			}
 	
 		?>
@@ -84,6 +80,7 @@
 		
 		<form method="post" action="" enctype="multipart/form-data" >
 			<label>Name of product</label><br><input type="text" name="name"><br>
+			<label>Product description</label><br><textarea name="descrip"></textarea><br>
 			<label>Material to be made out of</label><br>
 			<select name="material">
 			<?php

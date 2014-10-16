@@ -3,6 +3,11 @@ body{
 	font-family: 'Roboto', sans-serif;
 }
 
+textarea{
+	width: 16%;
+	height: 50px;
+}
+
 #header{
 	width: 100%;
 	background: white;

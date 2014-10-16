@@ -9,7 +9,7 @@ Status varchar(255) NOT NULL
 
 CREATE TABLE designs(
 DesignID INT NOT NULL PRIMARY KEY,
-File varchar(255) NOT NULL,
+Description varchar(255) NOT NULL,
 Categories varchar(255) NOT NULL,
 Name varchar(255) NOT NULL,
 Price double NOT NULL,
