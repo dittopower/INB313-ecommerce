@@ -7,6 +7,7 @@
 	
 	<TITLE>CC3D</TITLE>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" href="./images/cc3d.ico">
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 	<script>
