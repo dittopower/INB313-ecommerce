@@ -114,7 +114,13 @@ textarea{
 	width: 300px;
 	border: 2px solid black;
 }
-
+	
+	#cart sub{
+		float: right;
+		position: relative;
+		right: 10px;
+	}
+	
 	#cart ul{
 		text-align:left;
 	}
@@ -127,6 +133,21 @@ textarea{
 		width: 50px;
 		height: 50px;
 		float:right;
+	}
+
+
+#checkout{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+	#checkout a{
+		color:black;
+	}
+	
+	#checkout td, #checkout th{
+		border: 1px solid black;
+		padding: 5px;
 	}
 	
 #footer{

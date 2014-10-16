@@ -29,14 +29,14 @@
 			
 			for($i = 0; $i < count($items); $i++){
 				$id=$items[$i];
-				$ee = singleSQL("SELECT Name FROM designs WHERE DesignID=$id");
-				echo '<li>"<a href="./product.php?item='.$items[$i].'">' . $ee . '</a>" <sub>Item ID: ' . $items[$i] . '</sub></li>';
+				$ee = singleRowSQL("SELECT Name, Price FROM designs WHERE DesignID=$id");
+				echo '<li>"<a href="./product.php?item='.$items[$i].'">' . $ee[0] . '</a>"<sub>$' . sprintf('%0.2f',$ee[1]) . '</sub></li>';
 			}
 			
 			if(count($items) == 0){ echo 'Empty Cart.'; }
 		} else { echo 'Empty Cart.'; }
 	?>
 	</ul>
-	<form method="get" action="./shop.php"><input type="button" value="Reset Cart" onclick="resetCart();"><input type="submit" value="Checkout"></form>
+	<form method="get" action="./checkout.php"><input type="button" value="Reset Cart" onclick="resetCart();"><input type="submit" value="Checkout"></form>
 	
 </div>

@@ -6,12 +6,12 @@
 	<?php
 		if(isset($_GET['item'])){
 			$id=$_GET['item'];
-			$row = singleRowSQL("SELECT DesignID, Description, Name, Price, Available, Material, Categories FROM designs WHERE DesignID=$id");
+			$row = singleRowSQL("SELECT DesignID, Description, File, Name, Price, Available, Material, Categories FROM designs WHERE DesignID=$id");
 			if($row == 0){
 				echo "<h2>Product not found :(<br><br>#sadboys2001</h2>";
 			}else{
 				echo '
-				<img src="http://img2.wikia.nocookie.net/__cb20140518071050/towerofsaviors/images/archive/4/47/20140518072131!Placeholder.png" id="itemImg">
+				<img src="./ModelFiles/'. $row['File'] .'" id="itemImg">
 				<h2>' . $row["Name"] . ' - $' . sprintf('%0.2f',$row["Price"]) . '</h2>
 				<p>
 					Material: ' . $row['Material'] . '<br><br>
@@ -43,11 +43,11 @@
 				$category = mysqli_real_escape_string($mysqli,$_POST['categories']);
 				$description = mysqli_real_escape_string($mysqli,$_POST['descrip']);
 
-				$sql1 = runSQL("INSERT INTO designs (designID, Description, Categories, Name, Price, Available, Author, Material) VALUES($designID,'$description','$category','$name',$price,'Yes',$userid,'$material')");
+				$sql1 = runSQL("INSERT INTO designs (designID, Description, File, Categories, Name, Price, Available, Author, Material) VALUES($designID,'$description', '$fileName','$category','$name',$price,'Yes',$userid,'$material')");
 
 				if($sql1){
 					echo 'Design submitted.';
-				} else { echo 'Something went wrong.' . "INSERT INTO designs (designID, Description, Categories, Name, Price, Available, Author, Material) VALUES($designID,'$description','$category','$name',$price,'Yes',$userid,'$material')"; }
+				} else { echo 'Something went wrong.'; }
 				
 			}
 	
