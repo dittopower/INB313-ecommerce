@@ -3,16 +3,18 @@
 <div id="middleContainer"><div id="middle">
 
 <!-- CONTENT START -->
-<table id="checkout"><tr>
-<th>Item Name</th>
-<th>Quantity</th>
-<th>Price</th></tr>
+
 <?php
 	$total = 0;
 	if(isset($_COOKIE[$cookie_name])) {
 		$cookie_value = $_COOKIE[$cookie_name];
 		$items = explode(",", $cookie_value);
-		
+		?>
+		<table id="checkout"><tr>
+		<th>Item Name</th>
+		<th>Quantity</th>
+		<th>Price</th></tr>
+		<?php
 		for($i = 0; $i < count($items); $i++){
 			echo '<tr>';
 			$id=$items[$i];
@@ -24,12 +26,19 @@
 			echo '</tr>';
 		}
 		
-		echo '<tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td>TOTAL: $'.$total.'</td></tr>';
+		echo '<tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td>TOTAL: $'.$total.'</td></tr></table>'; ?>
 		
+		<br><br><center>
+		<?php if(isset($_SESSION['Email'])) {?>
+			<input id="payBtn" type="button" name="pay" value="Proceed to payment">
+		<?php }else{ echo "Login to proceed with checkout"; } ?>
+		</center>
+	<?php
 		if(count($items) == 0){ echo 'Empty Cart.'; }
+		
 	} else { echo 'Empty Cart.'; }
 ?>
-</table>
+
 <!-- CONTENT END -->
 
 </div></div>

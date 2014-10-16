@@ -1,4 +1,6 @@
 <?php
+	
+	$notLoggedInMessage = "You must be logged in to see this page.";
 
 	function singleSQL($sql){
 		global $mysqli;

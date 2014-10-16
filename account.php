@@ -39,9 +39,10 @@
 		<h2>Details</h2>
 		<?php 
 			$sql = "SELECT * FROM users where Email = '$_SESSION[Email]'";
-			$row = singleRowSQL($sql, $mysqli);
+			$row = singleRowSQL($sql);
 			echo "<b> Email:</b> $row[Email]<br>";
 			echo "<b> Name:</b> $row[FirstName] $row[Surname]<br>";
+			echo "<b> Shipping Address:</b> $row[ShippingAddress]<br>";
 		?>
 	</div>
 	
@@ -60,7 +61,7 @@
 	
 <?php
 	}else{
-		echo "...There's no point to this page when your not <b>Logged in</b>..";
+		echo $notLoggedInMessage;
 	}
 ?>
 

@@ -150,6 +150,10 @@ textarea{
 		padding: 5px;
 	}
 	
+	#payBtn{
+		padding: 5px;
+	}
+	
 #footer{
 	border-top: 1px dashed #222;
 	background: #d0d0d0;
