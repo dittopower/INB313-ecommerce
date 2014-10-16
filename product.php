@@ -34,7 +34,7 @@
 				$tmp = explode('.', $originalFile);
 				$extension = end($tmp);
 				
-				$fileName = $designID . $extension;
+				$fileName = $designID . "." . $extension;
 				move_uploaded_file($_FILES["model"]["tmp_name"], "./ModelFiles/" . $fileName);
 				
 				$name = mysqli_real_escape_string($mysqli,$_POST['name']);
