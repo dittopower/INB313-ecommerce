@@ -79,12 +79,8 @@
 		<h1>Submit New Product</h1>
 		
 		<form method="post" action="" enctype="multipart/form-data" >
-<<<<<<< HEAD
-			<label>Name of product</label><br><input type="text" name="name"><br>
-			<label>Product description</label><br><textarea name="descrip"></textarea><br>
-=======
 			<label>Name of product</label><br><input type="text" name="name" placeholder='Naruto Mug'><br>
->>>>>>> 0396940a34ab3c1b869cfee922490bb2e8247078
+			<label>Product description</label><br><textarea name="descrip"></textarea><br>
 			<label>Material to be made out of</label><br>
 			<select name="material">
 			<?php
