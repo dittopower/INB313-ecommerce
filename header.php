@@ -12,6 +12,7 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 	<script>
 		function addToCart(id){
+			ga('send', 'event', 'cart', 'add', 'Item Carted '+id, 1);
 			$.ajax({
 			  url: './cart.php?addToCart=' + id,
 			  success: function(data) {
@@ -21,6 +22,7 @@
 		}
 		
 		function resetCart(){
+			ga('send', 'event', 'cart', 'clear', 'cart cleared', 1);
 			$.ajax({
 			  url: './cart.php?resetCart=1',
 			  success: function(data) {

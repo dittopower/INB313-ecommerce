@@ -9,6 +9,8 @@
 	if(isset($_COOKIE[$cookie_name])) {
 		$cookie_value = $_COOKIE[$cookie_name];
 		$items = explode(",", $cookie_value);
+		$numitems = count($items);
+		echo "<script>ga('send', 'event', 'checkout', 'view', 'checkout viewed', $numitems);</script>";
 		?>
 		<table id="checkout"><tr>
 		<th>Item Name</th>
@@ -30,7 +32,7 @@
 		
 		<br><br><center>
 		<?php if(isset($_SESSION['Email'])) {?>
-			<input id="payBtn" type="button" name="pay" value="Proceed to payment">
+			<input id="payBtn" type="button" name="pay" value="Proceed to payment" onclick="ga('send', 'event', 'checkout', 'proceed', 'checkout proceed', 1);">
 		<?php }else{ echo "Login to proceed with checkout"; } ?>
 		</center>
 	<?php

@@ -47,6 +47,7 @@
 
 				if($sql1){
 					echo 'Design submitted.';
+					echo "<script>ga('send', 'event', 'design', 'submit', 'Design Submitted $userid', 1);</script>";
 				} else { echo 'Something went wrong.'; }
 					
 			}
