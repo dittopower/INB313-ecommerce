@@ -5,6 +5,7 @@
 <!-- CONTENT START -->
 <?php
 	//Ensure a USER is viewing the user page
+	$done = 0;
 	if (isset($_SESSION['Email'])){
 		echo "<h1>User Account Controls</h1><hr>";
 		
