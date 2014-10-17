@@ -3,10 +3,7 @@
 <div id="middleContainer"><div id="middle">
 
 <!-- CONTENT START -->
-
-Search Products (searches tags and product names)
-<form method="get" action=""><input type="search" name="search"><input type="submit" value="Search"></form>
-		
+	
 <?php
 	if(isset($_GET['search'])){
 		$search = $_GET['search'];

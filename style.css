@@ -55,6 +55,11 @@ textarea{
 		list-style-type: none;
 		padding: 10px;
 	}
+	
+	#navbar form{
+		margin-top: 10px;
+		margin-bottom: 0;
+	}
 
 #middleContainer{
 	margin: auto;

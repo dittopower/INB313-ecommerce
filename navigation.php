@@ -6,6 +6,7 @@
 		<?php if(isset($_SESSION['Email'])){?>
 		<a href="./product.php"><li>My Products</li></a>		
 		<a href="./account.php"><li>My Account</li></a>
+		<form method="get" action="./index.php"><input type="search" name="search" placeholder="Search by Tags or Names"><input type="submit" value="Search"></form>
 		<?php } ?>
 	</ul>
 
