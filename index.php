@@ -15,7 +15,7 @@
 	}
 	
 	while($rows = mysqli_fetch_array($ayy,MYSQLI_BOTH)){
-		echo '<a href="./product.php?item=' . $rows["DesignID"] . '"><div class="gridItem">';
+		echo '<a href="./product.php?item=' . $rows["DesignID"] . '&'. $rows["Name"].'"><div class="gridItem">';
 		echo '<div class="text">' . $rows["Name"] . ' - $' . sprintf('%0.2f',$rows["Price"]) . '</div>';
 		echo '<img src="./ModelFiles/'. $rows["File"] .'"></div></a>';
 	}
