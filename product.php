@@ -12,6 +12,7 @@
 				echo "<h2>Product not found :(<br><br>#sadboys2001</h2>";
 			}else{
 				echo '
+				<script>document.title = "CC3D - '.$row["Name"].'";</script>
 				<img src="./ModelFiles/'. $row['File'] .'" id="itemImg">
 				<h2>' . $row["Name"] . ' - $' . sprintf('%0.2f',$row["Price"]) . '</h2>
 				<p>
