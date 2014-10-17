@@ -1,7 +1,6 @@
 <?php session_start(); ?>
 <?php include 'connection_include.php'; ?>
 <?php include 'functions.php'; ?>
-<?php include 'cart.php'; ?>
 <HTML>
 <HEAD>
 	
@@ -34,7 +33,10 @@
 
 </HEAD>
 <BODY>
-	<?php include_once("analytics.php");?>
+	<?php
+		include_once("analytics.php");
+		include 'cart.php';
+	?>
 	<div id="header">
 		<img src="./images/CC3D.png" id="logo">CC3D - 1v1 Rust
 		<div id="loginInfo">
