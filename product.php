@@ -13,7 +13,7 @@
 			}else{
 			
 				if(isset($_SESSION['Email'])){$myemail = $_SESSION['Email'];}else{$myemail='';}
-				$authoremail = singleSQL("SELECT Email FROM users WHERE UserID=(SELECT Author FROM Designs WHERE DesignID=$id)");
+				$authoremail = singleSQL("SELECT Email FROM users WHERE UserID=(SELECT Author FROM designs WHERE DesignID=$id)");
 				
 				$materialName = singleSQL("SELECT Name FROM materials WHERE MaterialID=" . $row['Material']);
 				
@@ -25,7 +25,7 @@
 						$m = mysqli_real_escape_string($mysqli,$_POST['matr']);
 						$d = mysqli_real_escape_string($mysqli,$_POST['desc']);
 						$c = mysqli_real_escape_string($mysqli,$_POST['catcat']);
-						$shedooooo = runSQL("UPDATE Designs SET Name='$t', Price=$p, Material=$m, Description='$d', Categories='$c' WHERE DesignID=$id");
+						$shedooooo = runSQL("UPDATE designs SET Name='$t', Price=$p, Material=$m, Description='$d', Categories='$c' WHERE DesignID=$id");
 						if($shedooooo){ echo 'Product updated.'; }
 						else{ echo 'Failed to update.'; }
 						$row = singleRowSQL("SELECT DesignID, Description, File, Name, Price, Available, Material, Categories FROM designs WHERE DesignID=$id");
