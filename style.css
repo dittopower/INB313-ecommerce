@@ -103,6 +103,25 @@ textarea{
 		border: 1px solid black;
 	}
 	
+		#myProducts a{
+			color: black;
+		}
+		
+		#myProducts th{
+			text-align:left;
+			font-size: 1.2em;
+			padding-bottom: 10px;
+		}
+	
+	#newPro{
+		margin: auto;
+		width: 500px;
+	}
+	
+		#newPro input[type="text"], #newPro input[type="number"], #newPro textarea{
+			width: 500px;
+		}
+	
 	#itemImg{
 		width: 400px;
 		float:left;

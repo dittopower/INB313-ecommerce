@@ -11,28 +11,30 @@
 		
 	// Password Change
 		$match = 0;$wrong = 0;
-		if (isset($_POST['word1'])||isset($_POST['word2'])||isset($_POST['word3'])){
-			if ($_POST['word2'] != $_POST['word3']){
-				$match = 1;
-			}
-			
-			$dbPassword = singleSQL("SELECT Password FROM users WHERE Email='$_SESSION[Email]'", $mysqli);
-			if($dbPassword === md5($_POST['word1'])){
-				$wrong = 0;
-			}else{
-				$wrong = 1;
-			}
-			
-			if(!$match && (!$wrong)){
-					$passw = md5($_POST['word2']);
-					$sql = "UPDATE users SET `password` = '$passw' WHERE Email = '$_SESSION[Email]' LIMIT 1";
-					runSQL($sql);
-					$done = 1;
-			}
+		if (isset($_POST['word1'])&&isset($_POST['word2'])&&isset($_POST['word3'])){
+			if($_POST['word1']!="" && $_POST['word2']!="" && $_POST['word3']!=""){
+				if ($_POST['word2'] != $_POST['word3']){
+					$match = 1;
+				}
+				
+				$dbPassword = singleSQL("SELECT Password FROM users WHERE Email='$_SESSION[Email]'", $mysqli);
+				if($dbPassword === md5($_POST['word1'])){
+					$wrong = 0;
+				}else{
+					$wrong = 1;
+				}
+				
+				if(!$match && (!$wrong)){
+						$passw = md5($_POST['word2']);
+						$sql = "UPDATE users SET `password` = '$passw' WHERE Email = '$_SESSION[Email]' LIMIT 1";
+						runSQL($sql);
+						$done = 1;
+				}
+			}else{echo 'You need to fill in all of the boxes.';}
 		}
 	// End PW Change
 ?>
-	<?php if ($done){echo "<h3>!!Password Changed!!</h3>";}?>
+	<?php if ($done){echo "<h3>Password successfully changed!</h3>";}?>
 	
 	
 	<div id=userinfo>
