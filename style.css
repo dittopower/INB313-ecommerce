@@ -110,6 +110,10 @@ textarea{
 		margin-right: 10px;
 	}
 	
+	#desc{
+		width: 600px;
+	}
+	
 #cart{
 	background: #eee;
 	text-align: center;

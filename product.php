@@ -11,17 +11,63 @@
 			if($row == 0){
 				echo "<h2>Product not found :(<br><br>#sadboys2001</h2>";
 			}else{
-				echo '
-				<script>document.title = "CC3D - '.$row["Name"].'";</script>
-				<img src="./ModelFiles/'. $row['File'] .'" id="itemImg">
-				<h2>' . $row["Name"] . ' - $' . sprintf('%0.2f',$row["Price"]) . '</h2>
-				<p>
-					Material: ' . $row['Material'] . '<br><br>
-					'. $row["Description"] .'<br><br>
-					Tags: ' . $row["Categories"] . '
-				</p>
-				<input type="button" value="Add To Cart" onclick="addToCart(' . $id . ');">
-				<div class="clear"></div>';
+			
+				if(isset($_SESSION['Email'])){$myemail = $_SESSION['Email'];}else{$myemail='';}
+				$authoremail = singleSQL("SELECT Email FROM users WHERE UserID=(SELECT Author FROM Designs WHERE DesignID=$id)");
+				
+				$materialName = singleSQL("SELECT Name FROM materials WHERE MaterialID=" . $row['Material']);
+				
+				if(isset($_GET['edit']) && isset($_SESSION['Email'])){
+					
+					if(isset($_POST['title']) && isset($_POST['price']) && isset($_POST['matr']) && isset($_POST['desc']) && isset($_POST['catcat']) ){
+						$t = $_POST['title'];
+						$p = $_POST['price'];
+						$m = $_POST['matr'];
+						$d = $_POST['desc'];
+						$c = $_POST['catcat'];
+						$shedooooo = runSQL("UPDATE Designs SET Name='$t', Price=$p, Material=$m, Description='$d', Categories='$c' WHERE DesignID=$id");
+						if($shedooooo){ echo 'Product updated.'; }
+						else{ echo 'Falied to update.'; }
+						$row = singleRowSQL("SELECT DesignID, Description, File, Name, Price, Available, Material, Categories FROM designs WHERE DesignID=$id");
+					}
+					
+						$materials = multiSQL('SELECT MaterialID, Name, CostPerCubicCM FROM materials');
+						
+						if($myemail == $authoremail){
+							echo '
+							<script>document.title = "CC3D - '.$row["Name"].'";</script>
+							<img src="./ModelFiles/'. $row['File'] .'" id="itemImg">
+							<h2><form method="post" action="./product.php?item='.$id.'&edit=1"><input name="title" type="text" value="' . $row["Name"] . '"></input> - $<input name="price" type="number" range="any" value="' . sprintf('%0.2f',$row["Price"]) . '"></input></h2>
+							<p>
+								Material: <select name="matr">';
+								
+								while($rows = mysqli_fetch_array($materials,MYSQLI_BOTH)){
+									echo '<option value="' . $rows['MaterialID'] . '" selected=';
+									if($rows['MaterialID'] == $row['Material']){ echo '"selected"'; }
+									echo '>' . $rows['Name'] . ' - $' . sprintf('%0.2f',$rows['CostPerCubicCM']) . '</option>';
+								}
+								
+								echo '</select><br><br><textarea name="desc" id="desc">' . $row["Description"] .'</textarea><br><br>
+								Tags: <input name="catcat" type="text" value="' . $row["Categories"] . '"></input><br><br><input type="submit" value="Save"></input></form>
+							</p>
+							<div class="clear"></div>';
+							
+						}
+					
+				}else{
+					echo '
+					<script>document.title = "CC3D - '.$row["Name"].'";</script>
+					<img src="./ModelFiles/'. $row['File'] .'" id="itemImg">
+					<h2>' . $row["Name"] . ' - $' . sprintf('%0.2f',$row["Price"]) . '</h2>
+					<p>
+						Material: ' . $materialName . '<br><br>
+						'. $row["Description"] .'<br><br>
+						Tags: ' . $row["Categories"] . '
+					</p>
+					<input type="button" value="Add To Cart" onclick="addToCart(' . $id . ');">';
+					if($myemail == $authoremail){ echo '<input type="button" value="Edit Product" onclick="window.location=\'./product.php?item='.$id.'&edit=1\'">'; }
+					echo '<div class="clear"></div>';
+				}
 			}
 		}else{
 	
@@ -86,7 +132,7 @@
 				<label>Material to be made out of</label><br>
 				<select name="material">
 				<?php
-					$materials = multiSQL('SELECT MaterialID, Name, CostPerCubicCM FROM materials', $mysqli);
+					$materials = multiSQL('SELECT MaterialID, Name, CostPerCubicCM FROM materials');
 					while($rows = mysqli_fetch_array($materials,MYSQLI_BOTH)){
 						echo '<option value="' . $rows['MaterialID'] . '">' . $rows['Name'] . ' - $' . sprintf('%0.2f',$rows['CostPerCubicCM']) . '</option>';
 					}
