@@ -38,12 +38,13 @@
 	
 	
 	<div id=userinfo>
-		<h2>Details</h2>
+		<h2>My Details</h2>
 		<?php 
 			$sql = "SELECT * FROM users where Email = '$_SESSION[Email]'";
 			$row = singleRowSQL($sql);
 			echo "<b> Email:</b> $row[Email]<br>";
 			echo "<b> Name:</b> $row[FirstName] $row[Surname]<br>";
+			echo "<b> Contact Number:</b> $row[ContactNum]<br>";
 			echo "<b> Shipping Address:</b> $row[ShippingAddress]<br>";
 		?>
 	</div>
@@ -60,6 +61,32 @@
 		</form>
 	</div>
 	<hr>
+	
+	<h2>My Orders</h2>
+	<table id="tableList">
+	<th>ID</th>
+	<th>Cost</th>
+	<th>Items</th>
+	<th>Date</th>
+	<th>Status</th>
+	<?php
+	
+		$email = $_SESSION['Email'];
+		$userid = singleSQL("SELECT UserID FROM users WHERE Email='$email'");
+		
+		$ayy = multiSQL("SELECT OrderID, OrderCost, ItemsOrdered, DateOrdered, Status FROM orders WHERE CreatedBy=$userid");
+		while($rows = mysqli_fetch_array($ayy,MYSQLI_BOTH)){
+			echo "<tr>";
+			echo "<td>Order #" . $rows['OrderID'] . "</td>";
+			echo "<td>$" . sprintf('%0.2f',$rows['OrderCost']) . "</td>";
+			echo "<td>" . $rows['ItemsOrdered'] . "</td>";
+			echo "<td>" . $rows['DateOrdered'] . "</td>";
+			echo "<td>" . $rows['Status'] . "</td>";
+			echo "</tr>";
+		}
+	
+	?>
+	</table>
 	
 <?php
 	}else{

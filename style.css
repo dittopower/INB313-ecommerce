@@ -98,20 +98,23 @@ textarea{
 		clear:both;
 	}
 	
-	#myProducts{
+	#tableList{
 		width: 100%;
 		border: 1px solid black;
+    border-collapse: collapse;
 	}
 	
-		#myProducts a{
+		#tableList a{
 			color: black;
 		}
 		
-		#myProducts th{
+		#tableList th{
 			text-align:left;
 			font-size: 1.2em;
 			padding-bottom: 10px;
 		}
+		
+		#tableList tr:nth-child(odd) {background: #FFF}
 	
 	#newPro{
 		margin: auto;

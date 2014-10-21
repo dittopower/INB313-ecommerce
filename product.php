@@ -102,7 +102,7 @@
 		if((!isset($_GET['item'])) && isset($_SESSION['Email'])  ){ ?>
 
 			<h1>My Products</h1>
-			<table id="myProducts">
+			<table id="tableList">
 				<tr>
 					<th>Name</th>
 					<th>Price</th>
