@@ -1,4 +1,5 @@
 <div id="navbar">
+	<img src="./images/CC3D-alt.png" id="logo">CC3D - 1v1 Rust
 
 	<ul>
 		<a href="./"><li>Home</li></a>
@@ -7,7 +8,20 @@
 		<a href="./product.php"><li>My Products</li></a>		
 		<a href="./account.php"><li>My Account</li></a>
 		<?php } ?>
-		<form method="get" action="./index.php"><input type="search" name="search" placeholder="Search by Tags or Names"><input type="submit" value="Search"></form>
 	</ul>
-
+		
+		
+	<div id="nav2">
+		<form id="search" class="inline" method="get" action="./index.php"><input type="search" name="search" placeholder="Search by Tags or Names"><input type="submit" value="Search"></form>
+	
+		<div id="loginInfo">
+	
+			<?php
+				include 'login.php';
+			?>
+		
+		</div>
+		
+	</div>
+	
 </div>
