@@ -34,8 +34,8 @@
 		<form class="inline" id='userForm' method='POST'>
 			<input name='logout' hidden><input id='logoutbtn' type='submit' value='Logout'>
 	<?php }else{ 
-		echo "<a href='./register.php'>Register</a>";
-		echo "<form id='userForm' method='POST' ";
+		echo "<a href='./register.php'>Register</a>  ";
+		echo "<form class='inline' id='userForm' method='POST' ";
 		if ($fail){ echo "style='background:red;'";}
 			echo "><input type='email' name='emailL' placeholder='Email'>";
 			echo "<input type='password' name='passwordL' placeholder='Password'>";
