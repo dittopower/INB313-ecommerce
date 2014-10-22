@@ -38,6 +38,7 @@
 			$dress = $_POST['cadd'];
 			$_SESSION['Email'] = $email;
 			$sql = "UPDATE users SET `ContactNum` = '$phony', `ShippingAddress` = '$dress', `Email` = '$email' WHERE Email = '$_SESSION[Email]' LIMIT 1";
+			runSQL($sql);
 			$donee = 1;
 		}
 ?>
