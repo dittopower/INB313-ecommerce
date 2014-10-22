@@ -166,7 +166,8 @@
 					</select><br>
 					<label>Price to sell at</label><br><input type="number" step="0.01" name="price" placeholder='$'><br>
 					<label>Categories/Tags</label><br><input type="text" name="categories" placeholder='E.g. mug, naruto, coffee'><br>
-					<label>Model File</label><br><input type="file" name="model"><br><br>
+					<label>Image File</label><br><input type="file" name="model"><br>
+					<label>Model File (disabled)</label><br><input type="file" disabled><br><br>
 					<input type="submit" value="Submit Design">
 				</form>
 			</div>

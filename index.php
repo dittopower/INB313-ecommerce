@@ -4,6 +4,20 @@
 
 <!-- CONTENT START -->
 	
+<?php 
+
+	$ban = singlerowSQL("SELECT File, DesignID, Name, Price FROM designs ORDER BY RAND() LIMIT 1");
+
+?>
+	
+<div id="banner">
+	<img id="main" src="./ModelFiles/<?php echo $ban['File']; ?>">
+	<img class="blur" id="left" src="./ModelFiles/<?php echo $ban['File']; ?>">
+	<img class="blur" id="right" src="./ModelFiles/<?php echo $ban['File']; ?>">
+	
+	<center><h2><a href="./product.php?item=<?php echo $ban['DesignID'] . "\">" . $ban['Name'] . " - $" . $ban['Price'] ?></a></h2></center>
+</div>
+	
 <?php
 	if(isset($_GET['search'])){
 		$search = $_GET['search'];
