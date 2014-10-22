@@ -37,7 +37,7 @@
 							echo '
 							<script>document.title = "CC3D - '.$row["Name"].'";</script>
 							<img src="./ModelFiles/'. $row['File'] .'" id="itemImg">
-							<h2><form method="post" action="./product.php?item='.$id.'&edit=1"><input name="title" type="text" value="' . $row["Name"] . '"></input> - $<input name="price" type="number" range="any" value="' . sprintf('%0.2f',$row["Price"]) . '"></input></h2>
+							<h2><form method="post" action="./product.php?item='.$id.'&edit=1"><input name="title" type="text" value="' . $row["Name"] . '"></input> - $<input name="price" type="number" step="0.01" value="' . sprintf('%0.2f',$row["Price"]) . '"></input></h2>
 							<p>
 								Material: <select name="matr">';
 								
@@ -67,6 +67,30 @@
 					<input type="button" value="Add To Cart" onclick="addToCart(' . $id . ');">';
 					if($myemail == $authoremail){ echo '<input type="button" value="Edit Product" onclick="window.location=\'./product.php?item='.$id.'&edit=1\'">'; }
 					echo '<div class="clear"></div>';
+					
+					$tags = explode(',', $row["Categories"]);
+					
+					$relatedSQL="SELECT DesignID, File, Name, Price FROM designs WHERE Categories LIKE ";
+					
+					$relatedSQL .= "'%" . $tags[0] . "%'";
+					
+					for($i = 1; count($tags) > $i; $i++){
+						$relatedSQL .= " OR Categories LIKE '%".$tags[$i]."%'";
+					}
+					
+					$relatedSQL .= " ORDER BY RAND() LIMIT 4";
+					
+					$rel = multiSQL($relatedSQL);
+					
+					echo '<br><br><div id="related"><h2>Related Items</h2>';
+					
+					while($rows = mysqli_fetch_array($rel,MYSQLI_BOTH)){
+						echo '<a href="./product.php?item=' . $rows["DesignID"] . '&'. $rows["Name"].'"><div class="third">';
+						echo '<div class="text">' . $rows["Name"] . ' - $' . sprintf('%0.2f',$rows["Price"]) . '</div>';
+						echo '<img src="./ModelFiles/'. $rows["File"] .'"></div></a>';
+					}
+
+					echo '</div><div class="clear"></div>';
 				}
 			}
 		}else{
@@ -140,7 +164,7 @@
 						}
 					?>	
 					</select><br>
-					<label>Price to sell at</label><br><input type="number" step="any" name="price" placeholder='$'><br>
+					<label>Price to sell at</label><br><input type="number" step="0.01" name="price" placeholder='$'><br>
 					<label>Categories/Tags</label><br><input type="text" name="categories" placeholder='E.g. mug, naruto, coffee'><br>
 					<label>Model File</label><br><input type="file" name="model"><br><br>
 					<input type="submit" value="Submit Design">

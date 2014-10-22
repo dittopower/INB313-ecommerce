@@ -32,8 +32,8 @@ textarea{
 
 	#nav2{
 		width:  calc(100% - 10px);
-		padding: 0 5px 0 5px;
-		text-align:left;
+		padding: 15px 5px 0 5px;
+		text-align:center;
 	}
 	
 		#loginInfo{
@@ -42,7 +42,11 @@ textarea{
 		}
 		
 		#search{
-			
+			float:left;
+		}
+		
+		#filter{
+			font-size: 0.5em;
 		}
 	
 	.inline{
@@ -72,7 +76,6 @@ textarea{
 	}
 	
 	#navbar form{
-		margin-top: 10px;
 		margin-bottom: 0;
 	}
 
@@ -100,7 +103,7 @@ textarea{
 		height: 100%;
 	}
 	
-	.gridItem .text{
+	.text{
 		text-align:center;
 		width: 100%;
 		position: absolute;
@@ -109,6 +112,7 @@ textarea{
 		opacity: 0.6;
 		filter: alpha(opacity=60); /* For IE8 and earlier */
 		background: black;
+		color: white;
 	}
 	
 	.clear{
@@ -152,6 +156,23 @@ textarea{
 	#desc{
 		width: 600px;
 	}
+	
+	#related{
+		width: 100%;
+	}
+	
+		.third{
+			width: 271px;
+			height: 210px;
+			float:left;
+			position: relative;
+			margin: 2px;
+		}
+		
+			.third img{
+				width: 100%;
+				height: 100%;
+			}
 	
 #cart{
 	background: #eee;

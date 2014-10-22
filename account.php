@@ -65,7 +65,7 @@
 	<h2>My Orders</h2>
 	<table id="tableList">
 	<th>ID</th>
-	<th>Cost</th>
+	<th>Total Cost</th>
 	<th>Items</th>
 	<th>Date</th>
 	<th>Status</th>
@@ -79,7 +79,17 @@
 			echo "<tr>";
 			echo "<td>Order #" . $rows['OrderID'] . "</td>";
 			echo "<td>$" . sprintf('%0.2f',$rows['OrderCost']) . "</td>";
-			echo "<td>" . $rows['ItemsOrdered'] . "</td>";
+			echo "<td>";
+			
+			$items = explode(' ', $rows['ItemsOrdered']);
+			
+			for($i=0; count($items) > $i; $i++){
+				$id = $items[$i];
+				$itemInfo = singleRowSQL("SELECT Name, Price FROM designs WHERE DesignID=$id");
+				echo "<a href='./product.php?item=" . $id . "'>" .$itemInfo['Name'] . "</a> ($" . sprintf('%0.2f',$itemInfo['Price']) . ")<br>";
+			}
+			
+			echo "</td>";
 			echo "<td>" . $rows['DateOrdered'] . "</td>";
 			echo "<td>" . $rows['Status'] . "</td>";
 			echo "</tr>";
