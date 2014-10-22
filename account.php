@@ -5,14 +5,14 @@
 <!-- CONTENT START -->
 <?php
 	//Ensure a USER is viewing the user page
-	$done = 0;
+	$done = 0;$donee = 0;
 	if (isset($_SESSION['Email'])){
 		echo "<h1>User Account Controls</h1><hr>";
 		
 	// Password Change
 		$match = 0;$wrong = 0;
 		if (isset($_POST['word1'])&&isset($_POST['word2'])&&isset($_POST['word3'])){
-			if($_POST['word1']!="" && $_POST['word2']!="" && $_POST['word3']!=""){
+			if($_POST['word2']!="" && $_POST['word3']!=""){
 				if ($_POST['word2'] != $_POST['word3']){
 					$match = 1;
 				}
@@ -31,10 +31,23 @@
 						$done = 1;
 				}
 			}else{echo 'You need to fill in all of the boxes.';}
-		}
 	// End PW Change
+		}else if (isset($_POST['cemail']) && isset($_POST['cphone']) && isset($_POST['cadd'])){
+			$email = $_POST['cemail'];
+			$phony = $_POST['cphone'];
+			$dress = $_POST['cadd'];
+			$_SESSION['Email'] = $email;
+			$sql = "UPDATE users SET `ContactNum` = '$phony', `ShippingAddress` = '$dress', `Email` = '$email' WHERE Email = '$_SESSION[Email]' LIMIT 1";
+			$donee = 1;
+		}
 ?>
-	<?php if ($done){echo "<h3>Password successfully changed!</h3>";}?>
+	<?php 
+		if ($done){
+			echo "<h3>Password successfully changed!</h3>";
+		}else if ($donee){
+			echo "<h3>User Details Changed!</h3>";
+		}
+	?>
 	
 	
 	<div id=userinfo>
@@ -42,10 +55,10 @@
 		<?php 
 			$sql = "SELECT * FROM users where Email = '$_SESSION[Email]'";
 			$row = singleRowSQL($sql);
-			echo "<b> Email:</b> $row[Email]<br>";
+			echo "<form method='POST' action='./account.php'><b> Email:</b> <input type='email' name='cemail' value='$row[Email]'><br>";
 			echo "<b> Name:</b> $row[FirstName] $row[Surname]<br>";
-			echo "<b> Contact Number:</b> $row[ContactNum]<br>";
-			echo "<b> Shipping Address:</b> $row[ShippingAddress]<br>";
+			echo "<b> Contact Number:</b> <input type='tel' name='cphone' value='$row[ContactNum]'><br>";
+			echo "<b> Shipping Address:</b> <input type='text' name='cadd' value='$row[ShippingAddress]'><br><input type='submit' value='Change Details'><br></form>";
 		?>
 	</div>
 	
