@@ -1,5 +1,5 @@
 <div id="footer">
-	&copy; Joshua Henley, Damon Jones, Chris Litherland, Iain Nicholas
+	&copy; Joshua Henley, Damon Jones, <span onclick="location='./images/EE.png?Easter_Egg=Best_Site_Ever'">Chris</span> Litherland, Iain Nicholas
 </div>
 
 </BODY></HTML>
