@@ -11,7 +11,7 @@
 		
 		
 	<div id="nav2">
-		<form id="search" class="inline" method="get" action="./index.php"><input type="search" name="search" placeholder="Search by Tags or Names"><input type="submit" value="Search"></form>
+		<form id="search" class="inline" method="get" action="./"><input type="search" name="search" placeholder="Search by Tags or Names"><input type="submit" value="Search"></form>
 	
 		
 	
