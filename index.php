@@ -8,22 +8,21 @@
 
 	$ban = singlerowSQL("SELECT File, DesignID, Name, Price FROM designs ORDER BY RAND() LIMIT 1");
 
-?>
-	
-<div id="banner">
-	<img id="main" src="./ModelFiles/<?php echo $ban['File']; ?>">
-	<img class="blur" id="left" src="./ModelFiles/<?php echo $ban['File']; ?>">
-	<img class="blur" id="right" src="./ModelFiles/<?php echo $ban['File']; ?>">
-	
-	<center><h2><a href="./product.php?item=<?php echo $ban['DesignID'] . "\">" . $ban['Name'] . " - $" . $ban['Price'] ?></a></h2></center>
-</div>
-	
-<?php
 	if(isset($_GET['search'])){
 		$search = $_GET['search'];
 		echo '<h2>Search result for: ' . $search . '</h2>';
 		$ayy = multiSQL("SELECT DesignID, File, Name, Price, Available FROM designs WHERE Name LIKE '%" . $search . "%' OR Categories LIKE '%" . $search . "%'");
-	}else{
+	}else{ ?>
+	
+		<div id="banner">
+			<img id="main" src="./ModelFiles/<?php echo $ban['File']; ?>">
+			<img class="blur" id="left" src="./ModelFiles/<?php echo $ban['File']; ?>">
+			<img class="blur" id="right" src="./ModelFiles/<?php echo $ban['File']; ?>">
+			
+			<center><h2><a href="./product.php?item=<?php echo $ban['DesignID'] . "\">" . $ban['Name'] . " - $" . sprintf('%0.2f',$ban['Price']); ?></a></h2></center>
+		</div>
+
+	<?php
 		echo '<h1>New Products</h1>';
 		$ayy = multiSQL("SELECT DesignID, File, Name, Price, Available FROM designs ORDER BY DesignID DESC LIMIT 10");
 	}

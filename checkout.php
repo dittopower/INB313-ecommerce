@@ -26,7 +26,7 @@
 			
 			$cartspaces = str_replace(',', ' ', $cookie_value);
 			
-			$sql = "INSERT INTO orders (OrderID, CreatedBy, OrderCost, ItemsOrdered, DateOrdered,Status) VALUES($orderid,$userid,$total,'$cartspaces','".date('d-m-Y H:i:s')."','Payment Pending')";
+			$sql = "INSERT INTO orders (OrderID, CreatedBy, OrderCost, ItemsOrdered, DateOrdered,Status) VALUES($orderid,$userid,$total,'$cartspaces','".date('Y-m-d H:i:s')."','Payment Pending')";
 			
 			$ye = runSQL($sql);
 			
@@ -37,12 +37,14 @@
 				
 				echo '<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 				<input type="hidden" name="cmd" value="_xclick">
-				<input type="hidden" name="business" value="josh@joshuahenley.com">
+				<input type="hidden" name="business" value="roflmonster.jh@gmail.com">
 				<input type="hidden" name="item_name" value="CC3D - Order '. $orderid .'">
 				<input type="hidden" name="currency_code" value="AUD">
 				<input type="hidden" name="amount" value="' . $total . '">
 				<input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it\'s fast, free and secure!">
-			</form></center>';
+				</form></center>';
+				
+				 echo "<script>ga('send', 'event', 'checkout', 'pay', 'paymentmade', $total);</script>";
 
 			}else{ echo 'Order failed.'; }
 
