@@ -160,7 +160,8 @@ textarea{
 	}
 	
 	#middleContainer a{
-		text-decoration: none;
+		-moz-text-decoration-color: black;
+		text-decoration-color: black;
 	}
 	
 	.clear{
@@ -170,7 +171,7 @@ textarea{
 	#tableList{
 		width: 100%;
 		border: 1px solid black;
-    border-collapse: collapse;
+		border-collapse: collapse;
 	}
 	
 		#tableList a{
