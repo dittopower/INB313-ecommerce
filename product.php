@@ -36,7 +36,7 @@
 						if($myemail == $authoremail){
 							echo '
 							<script>document.title = "CC3D - '.$row["Name"].'";</script>
-							<img src="./ModelFiles/'. $row['File'] .'" id="itemImg">
+							<a href="./ModelFiles/'. $row['File'] .'" target="_blank"><img src="./ModelFiles/'. $row['File'] .'" id="itemImg"></a>
 							<h2><form method="post" action="./product.php?item='.$id.'&edit=1"><input name="title" type="text" value="' . $row["Name"] . '"></input> - $<input name="price" type="number" step="0.01" value="' . sprintf('%0.2f',$row["Price"]) . '"></input></h2>
 							<p>
 								Material: <select name="matr">';
@@ -57,7 +57,7 @@
 				}else{
 					echo '
 					<script>document.title = "CC3D - '.$row["Name"].'";</script>
-					<img src="./ModelFiles/'. $row['File'] .'" id="itemImg">
+					<a href="./ModelFiles/'. $row['File'] .'" target="_blank"><img src="./ModelFiles/'. $row['File'] .'" id="itemImg"></a>
 					<h2>' . $row["Name"] . ' - $' . sprintf('%0.2f',$row["Price"]) . '</h2>
 					<p>
 						Material: ' . $materialName . '<br><br>
