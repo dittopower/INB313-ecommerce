@@ -1,6 +1,7 @@
 body{
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
+	
 }
 
 textarea{
@@ -93,6 +94,11 @@ textarea{
 		height: 400px;
 		position: relative;
 	}
+	
+		#banner h2{
+			font-weight: 900;
+			letter-spacing: 4px;
+		}
 	
 		#banner a{
 			color:black;
@@ -232,6 +238,18 @@ textarea{
 	width: 300px;
 	border: 2px solid black;
 }
+
+	#toggle{
+		border: 2px solid black;
+		position: relative;
+		top: -24px;
+		left:-2px;
+		background: #eee;
+		height: 20px;
+		width: 100%;
+		margin: auto;
+		padding: 5px 0 5px 0;
+	}
 	
 	#cart sub{
 		float: right;

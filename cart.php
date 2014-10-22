@@ -20,7 +20,8 @@
 ?>
 
 <div id="cart">
-	<h2>Shopping Cart</h2><!--<img src="./images/cart.png" id="cartIcon">-->
+	<div id="toggle" onclick='toggle();'>&#8595; Shopping Cart &#8595;</div>
+	<!--<h2>Shopping Cart</h2><!--<img src="./images/cart.png" id="cartIcon">-->
 	<ul>
 	<?php
 		if(isset($_COOKIE[$cookie_name])) {

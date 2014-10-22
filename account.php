@@ -9,7 +9,7 @@
 	if (isset($_SESSION['Email'])){
 		echo "<h1>User Account Controls</h1><hr>";
 		
-	// Password Change
+		// Password Change
 		$match = 0;$wrong = 0;
 		if (isset($_POST['word1'])&&isset($_POST['word2'])&&isset($_POST['word3'])){
 			if($_POST['word2']!="" && $_POST['word3']!=""){
@@ -31,7 +31,7 @@
 						$done = 1;
 				}
 			}else{echo 'You need to fill in all of the boxes.';}
-	// End PW Change
+		// End PW Change
 		}else if (isset($_POST['cemail']) && isset($_POST['cphone']) && isset($_POST['cadd'])){
 			$email = $_POST['cemail'];
 			$phony = $_POST['cphone'];
