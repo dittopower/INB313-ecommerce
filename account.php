@@ -33,9 +33,9 @@
 			}else{echo 'You need to fill in all of the boxes.';}
 		// End PW Change
 		}else if (isset($_POST['cemail']) && isset($_POST['cphone']) && isset($_POST['cadd'])){
-			$email = $_POST['cemail'];
-			$phony = $_POST['cphone'];
-			$dress = $_POST['cadd'];
+			$email = mysqli_real_escape_string($mysqli,$_POST['cemail']);
+			$phony = mysqli_real_escape_string($mysqli,$_POST['cphone']);
+			$dress = mysqli_real_escape_string($mysqli,$_POST['cadd']);
 			$_SESSION['Email'] = $email;
 			$sql = "UPDATE users SET `ContactNum` = '$phony', `ShippingAddress` = '$dress', `Email` = '$email' WHERE Email = '$_SESSION[Email]' LIMIT 1";
 			runSQL($sql);

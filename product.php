@@ -6,7 +6,7 @@
 	<?php
 
 		if(isset($_GET['item'])){
-			$id=$_GET['item'];
+			$id=mysqli_real_escape_string($mysqli,$_GET['item']);
 			$row = singleRowSQL("SELECT DesignID, Description, File, Name, Price, Available, Material, Categories FROM designs WHERE DesignID=$id");
 			if($row == 0){
 				echo "<h2>Product not found :(<br><br>#sadboys2001</h2>";
@@ -109,8 +109,8 @@
 				move_uploaded_file($_FILES["model"]["tmp_name"], "./ModelFiles/" . $fileName);
 				
 				$name = mysqli_real_escape_string($mysqli,$_POST['name']);
-				$material = $_POST['material'];
-				$price = $_POST['price'];
+				$material = mysqli_real_escape_string($mysqli,$_POST['material']);
+				$price = mysqli_real_escape_string($mysqli,$_POST['price']);
 				$category = mysqli_real_escape_string($mysqli,$_POST['categories']);
 				$description = mysqli_real_escape_string($mysqli,$_POST['descrip']);
 

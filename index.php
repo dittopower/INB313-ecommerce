@@ -9,7 +9,7 @@
 	$ban = singlerowSQL("SELECT File, DesignID, Name, Price FROM designs ORDER BY RAND() LIMIT 1");
 
 	if(isset($_GET['search'])){
-		$search = $_GET['search'];
+		$search = mysqli_real_escape_string($mysqli,$_GET['search']);
 		echo '<h2>Search result for: ' . $search . '</h2>';
 		$ayy = multiSQL("SELECT DesignID, File, Name, Price, Available FROM designs WHERE Name LIKE '%" . $search . "%' OR Categories LIKE '%" . $search . "%'");
 	}else{ ?>
