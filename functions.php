@@ -1,7 +1,9 @@
 <?php
 	
 	$notLoggedInMessage = "You must be logged in to see this page.";
-
+	$warehousee = "warehouse@warehouse.com";
+	$warehousepw = "warehouse";
+	
 	function singleSQL($sql){
 		global $mysqli;
 		$p = mysqli_query($mysqli,$sql);

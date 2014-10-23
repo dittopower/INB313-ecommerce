@@ -6,15 +6,16 @@
 <?php
 	if(isset($_POST['email']) && isset($_POST['firstname']) && isset($_POST['surname']) && isset($_POST['password']) && isset($_POST['password1']) && isset($_POST['shipping']) && isset($_POST['contact'])){
 		
-		$email = $_POST['email'];
-		$firstname = $_POST['firstname'];
-		$surname = $_POST['surname'];
-		$p1 = md5($_POST['password']);
-		$p2 = md5($_POST['password1']);
-		$ship = $_POST['shipping'];
-		$contact = $_POST['contact'];
+		$email = mysqli_real_escape_string($mysqli,$_POST['email']);
+		$firstname = mysqli_real_escape_string($mysqli,$_POST['firstname']);
+		$surname = mysqli_real_escape_string($mysqli,$_POST['surname']);
+		$p1 = md5(mysqli_real_escape_string($mysqli,$_POST['password']));
+		$p2 = md5(mysqli_real_escape_string($mysqli,$_POST['password1']));
+		$ship = mysqli_real_escape_string($mysqli,$_POST['shipping']);
+		$contact = mysqli_real_escape_string($mysqli,$_POST['contact']);
 		
-		$exist = singleSQL("SELECT Email FROM users WHERE Email='$email'", $mysqli);	
+		$exist = singleSQL("SELECT Email FROM users WHERE Email='$email'", $mysqli);
+		if($email == $warehousee){ $exist=$warehousee;}
 		if($p1 === $p2 && $exist == null){
 				
 			$userid = singleSQL('SELECT UserID FROM users ORDER BY UserID DESC LIMIT 1', $mysqli) + 1;
@@ -38,15 +39,6 @@
 	}
 	
 	?>
-	<br>
-	<h1>Login</h1>
-	
-	<form method="post" action="">
-		<label>Email</label><br><input type="text" name="emailL"><br>
-		<label>Password</label><br><input type="password" name="passwordL"><br>
-		<input type="submit" value="Login">
-	</form>
-	
 	<h1>Register</h1>
 	
 	<form method="post" action="">

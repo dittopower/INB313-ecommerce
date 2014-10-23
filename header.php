@@ -6,25 +6,31 @@
 	$fail = false;
 	if(isset($_POST['emailL']) && isset($_POST['passwordL'])){
 		
-		$email = strtolower($_POST['emailL']);
-		$pass = $_POST['passwordL'];
-
-		$p = mysqli_query($mysqli,"SELECT Password FROM users WHERE Email='" . $email ."'");
+		$email = mysqli_real_escape_string($mysqli,strtolower($_POST['emailL']));
+		$pass = mysqli_real_escape_string($mysqli,$_POST['passwordL']);
 		
-		if($p -> num_rows !== 0){
-	
-			$t = mysqli_fetch_array($p,MYSQLI_BOTH);
-			$dbPassword = $t[0];
+		if($email == $warehousee && $pass == $warehousepw){
+			$_SESSION['Email'] = $email;
+		} else {
+		
+			$p = mysqli_query($mysqli,"SELECT Password FROM users WHERE Email='" . $email ."'");
+			
+			if($p -> num_rows !== 0){
+		
+				$t = mysqli_fetch_array($p,MYSQLI_BOTH);
+				$dbPassword = $t[0];
 
-			if($dbPassword === md5($pass)){
-				$_SESSION['Email'] = $email;
+				if($dbPassword === md5($pass)){
+					$_SESSION['Email'] = $email;
+				} else {
+					$fail = true;
+				}
+
 			} else {
 				$fail = true;
-			}
-
-		} else {
-			$fail = true;
-		}//if returns empty
+			}//if returns empty
+			
+		}//if not warehouse
 		
 	}else if (isset($_POST['logout'])){
 		$_SESSION = array();
