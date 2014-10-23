@@ -112,6 +112,11 @@ textarea{
 	position: relative;
 }
 
+	#fb{
+		width: 100%;
+		text-align:left;
+	}
+
 	#banner{
 		width: 100%;
 		height: 310px;

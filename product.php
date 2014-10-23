@@ -63,20 +63,19 @@
 					<script>document.title = "CC3D - '.$row["Name"].'";</script>
 					<a href="./ModelFiles/'. $row['File'] .'" target="_blank"><img src="./ModelFiles/'. $row['File'] .'" id="itemImg"></a>
 					<h2>' . $row["Name"] . ' - $' . sprintf('%0.2f',$row["Price"]) . '</h2>
-					<a href="./product.php?user='.$row['Author'].'">More items by "' . $nameee . '"</a><br><br>';
+					<a href="./product.php?user='.$row['Author'].'">More items by "' . $nameee . '"</a><br><br>
+					Material: ' . $materialName . '<br><br>';
 					
 					echo '<input type="button" value="Add To Cart" onclick="addToCart(' . $id . ');">';
 					if($myemail == $authoremail){ echo '<input type="button" value="Edit Product" onclick="window.location=\'./product.php?item='.$id.'&edit=1\'">'; }
 					
-					echo '<div class="clear"></div><br>
-					Material: ' . $materialName . '<br>
+					echo '<div class="clear"></div>
 					<br>'. $row["Description"] .'<br><br>Tags: ';
 						
 					foreach($tags as $mytag){
 						$ytag = trim($mytag);
 						echo "<a href='./?search=$ytag'>$ytag</a> ";
 					}
-					
 					
 					$relatedSQL="SELECT DesignID, File, Name, Price FROM designs WHERE Categories LIKE ";
 					$relatedSQL .= "'%" . $tags[0] . "%'";
@@ -89,7 +88,11 @@
 					
 					$rel = multiSQL($relatedSQL);
 					
-					echo '<br><br><div id="related"><h2>Related Items</h2>';
+					echo '<h2>Comments</h2>';
+					
+					echo '<div id="fb"><div class="fb-comments" data-href="http://joshuahenley.com/313/product.php?item='.$id.'" data-width="100%" data-numposts="5" data-colorscheme="light"></div></div>';
+					
+					echo '<div id="related"><h2>Related Items</h2>';
 					
 					while($rows = mysqli_fetch_array($rel,MYSQLI_BOTH)){
 						echo '<a href="./product.php?item=' . $rows["DesignID"] . '&'. $rows["Name"].'"><div class="third">';
