@@ -3,6 +3,7 @@
 	$notLoggedInMessage = "You must be logged in to see this page.";
 	$warehousee = "warehouse@warehouse.com";
 	$warehousepw = "warehouse";
+	$shipping = 10;
 	
 	function singleSQL($sql){
 		global $mysqli;

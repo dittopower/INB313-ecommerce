@@ -88,11 +88,11 @@
 		$email = $_SESSION['Email'];
 		$userid = singleSQL("SELECT UserID FROM users WHERE Email='$email'");
 		
-		$ayy = multiSQL("SELECT OrderID, OrderCost, ItemsOrdered, DateOrdered, Status FROM orders WHERE CreatedBy=$userid");
+		$ayy = multiSQL("SELECT OrderID, OrderCost, ItemsOrdered, DateOrdered, Status FROM orders WHERE CreatedBy=$userid ORDER BY OrderID DESC");
 		while($rows = mysqli_fetch_array($ayy,MYSQLI_BOTH)){
 			echo "<tr>";
 			echo "<td>Order #" . $rows['OrderID'] . "</td>";
-			echo "<td>$" . sprintf('%0.2f',$rows['OrderCost']) . "</td>";
+			echo "<td>$" . sprintf('%0.2f',$rows['OrderCost']) . " + $".$shipping." Shipping</td>";
 			echo "<td>";
 			
 			$items = explode(' ', $rows['ItemsOrdered']);

@@ -29,9 +29,9 @@
 			$sql = "INSERT INTO orders (OrderID, CreatedBy, OrderCost, ItemsOrdered, DateOrdered,Status) VALUES($orderid,$userid,$total,'$cartspaces','".date('Y-m-d H:i:s')."','Payment Pending')";
 			
 			$ye = runSQL($sql);
-			
+						
 			if($ye){
-				echo '<center><h1>Order  successfully placed :)</h1>Order number: #' . $orderid . '<br><br>Total Cost: $'.sprintf('%0.2f',$total);
+				echo '<center><h1>Order  successfully placed :)</h1>Order number: #' . $orderid . '<br><br>Total Cost: $'.sprintf('%0.2f',$total+$shipping).' ($'.sprintf('%0.2f',$total).' + $'.$shipping.' Shipping)';
 				
 				echo '<br><br>Current status: <strong>Awaiting payment</strong><br><br><h2>Please proceed to payment: </h2>';
 				
@@ -40,7 +40,7 @@
 				<input type="hidden" name="business" value="roflmonster.jh@gmail.com">
 				<input type="hidden" name="item_name" value="CC3D - Order '. $orderid .'">
 				<input type="hidden" name="currency_code" value="AUD">
-				<input type="hidden" name="amount" value="' . $total . '">
+				<input type="hidden" name="amount" value="' . ($total + $shipping) . '">
 				<input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it\'s fast, free and secure!">
 				</form></center>';
 				
@@ -49,6 +49,7 @@
 			}else{ echo 'Order failed.'; }
 
 		}else{
+			$total += $shipping;//shipping offset
 			
 			echo "<script>ga('send', 'event', 'checkout', 'view', 'checkout viewed', $numitems);</script>";
 			?>
@@ -67,6 +68,8 @@
 				$total += $ee[1];
 				echo '</tr>';
 			}
+			echo '<tr><td></td><td></td><td></td></tr>';
+			echo '<tr><td><strong>Shipping</strong></td><td></td><td>$'.sprintf('%0.2f',$shipping).'</td></tr>';
 			
 			echo '<tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td>TOTAL: $'.sprintf('%0.2f',$total).'</td></tr></table>'; ?>
 			

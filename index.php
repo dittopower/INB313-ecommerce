@@ -3,7 +3,7 @@
 
 <div id="nav2">
 	<div id="smaller">
-		<div id="search"><form class="inline" method="get" action="./"><input type="search" name="search" placeholder="Search by Tags or Names" value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>"><input type="submit" value="Search"></div>
+		<div id="search"><form class="inline" method="get" action="./"><input id="searchText" type="search" name="search" placeholder="Search by Tags or Names" value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>"><input type="submit" value="Search"></div>
 		<div id="filter" >
 
 			  <div id="test">Price range:</div>
@@ -33,7 +33,7 @@
 	}else{ 
 	
 		$ban = singlerowSQL("SELECT File, DesignID, Name, Price FROM designs ORDER BY RAND() LIMIT 1"); ?>
-		
+				
 		<div id="banner">
 			<img id="main" src="./ModelFiles/<?php echo $ban['File']; ?>">
 			<img class="blur" id="left" src="./ModelFiles/<?php echo $ban['File']; ?>">

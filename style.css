@@ -65,7 +65,13 @@ textarea{
 			float:right;
 			margin-bottom: 0;
 			width:275px;
+			position: relative;
+			top: 10px;
 		}
+		
+			#searchText{
+				width: 200px;
+			}
 		
 		#smaller{
 			width: 550px;
