@@ -116,6 +116,15 @@
 			});
 		}
 		
+		function silresetCart(){
+			ga('send', 'event', 'cart', 'clear', 'cart cleared', 1);
+			$.ajax({
+			  url: './cart.php?resetCart=1',
+			  success: function(data) {
+			  }
+			});
+		}
+		
 		var cartToggle = false;
 
 		function toggle(){

@@ -44,7 +44,7 @@
 				<input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it\'s fast, free and secure!">
 				</form></center>';
 				
-				 echo "<script>ga('send', 'event', 'checkout', 'pay', 'paymentmade', $total);</script>";
+				 echo "<script>silresetCart(); ga('send', 'event', 'checkout', 'pay', 'paymentmade', $total);</script>";
 
 			}else{ echo 'Order failed.'; }
 

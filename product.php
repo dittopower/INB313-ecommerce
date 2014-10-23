@@ -155,6 +155,7 @@
 					<th>Name</th>
 					<th>Price</th>
 					<th>Material</th>
+					<th>Product Purchases</th>
 					<th></th>
 				</tr>
 				<?php
@@ -168,6 +169,8 @@
 						echo "<td>$" . sprintf('%0.2f',$rows['Price']) . "</td>";
 						$materialll = singleSQL("SELECT Name FROM materials WHERE MaterialID=" . $rows['Material']);
 						echo "<td>" . $materialll . "</td>";
+						$number = singleSQL("SELECT COUNT(*) FROM orders WHERE ItemsOrdered LIKE '%".$rows['DesignID']."%'");
+						echo "<td>$number</td>";
 						echo '<td align="right"><input type="button" value="Edit Product" onclick="window.location=\'./product.php?item='.$rows['DesignID'].'&edit=1\'"></td>';
 						echo "</tr>";
 					}
