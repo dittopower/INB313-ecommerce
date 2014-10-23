@@ -48,7 +48,7 @@
 								}
 								
 								echo '</select><br><br><textarea name="desc" id="desc">' . $row["Description"] .'</textarea><br><br>
-								Tags: <input name="catcat" type="text" value="' . $row["Categories"] . '"></input><br><br><input type="submit" value="Save"></input></form>
+								Tags:<br><input name="catcat" id="catcat" type="text" value="' . $row["Categories"] . '"></input><br><br><input type="submit" value="Save"></input></form>
 							</p>
 							<div class="clear"></div>';
 							

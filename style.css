@@ -199,6 +199,10 @@ textarea{
 		padding: 3px 0 3px 0;
 	}
 	
+	#catcat{
+		width: 600px;
+	}
+	
 	#middleContainer a{
 		-moz-text-decoration-color: black;
 		text-decoration-color: black;
