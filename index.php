@@ -2,19 +2,20 @@
 <?php include 'navigation.php'; ?>
 
 <div id="nav2">
-	<div id="search"><form class="inline" method="get" action="./"><input type="search" name="search" placeholder="Search by Tags or Names"><input type="submit" value="Search"></div>
-	<div id="filter" >
+	<div id="smaller">
+		<div id="search"><form class="inline" method="get" action="./"><input type="search" name="search" placeholder="Search by Tags or Names"><input type="submit" value="Search"></div>
+		<div id="filter" >
 
-		  <div id="test">Price range:</div>
-		  <input type="text" name="price" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-		 
-		<div id="slider-range"></div>
+			  <div id="test">Price range:</div>
+			  <input type="text" name="price" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+			 
+			<div id="slider-range"></div>
+			
+		</div>
 		
+		</form>
+		<div class="clear"></div><br>
 	</div>
-	
-	</form>
-	<div class="clear"></div><br>
-	
 </div>
 
 <div id="middleContainer"><div id="middle">

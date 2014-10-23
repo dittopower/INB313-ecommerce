@@ -79,7 +79,11 @@
 	
 	?>
 	<script>
+	
+		if(screen.width < 1300){document.body.style.width=1300;}
+	
 		$(function() {
+		
 			$( "#slider-range" ).slider({
 				range: true,
 				min: <?php echo $mmin; ?>,
