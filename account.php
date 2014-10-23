@@ -32,12 +32,12 @@
 				}
 			}else{echo 'You need to fill in all of the boxes.';}
 		// End PW Change
-		}else if (isset($_POST['cemail']) && isset($_POST['cphone']) && isset($_POST['cadd'])){
-			$email = mysqli_real_escape_string($mysqli,$_POST['cemail']);
+		}else if (isset($_POST['cphone']) && isset($_POST['cadd'])){
+			//$email = mysqli_real_escape_string($mysqli,$_POST['cemail']);
 			$phony = mysqli_real_escape_string($mysqli,$_POST['cphone']);
 			$dress = mysqli_real_escape_string($mysqli,$_POST['cadd']);
 			$_SESSION['Email'] = $email;
-			$sql = "UPDATE users SET `ContactNum` = '$phony', `ShippingAddress` = '$dress', `Email` = '$email' WHERE Email = '$_SESSION[Email]' LIMIT 1";
+			$sql = "UPDATE users SET `ContactNum` = '$phony', `ShippingAddress` = '$dress'WHERE Email = '$_SESSION[Email]' LIMIT 1";
 			runSQL($sql);
 			$donee = 1;
 		}
@@ -56,7 +56,7 @@
 		<?php 
 			$sql = "SELECT * FROM users where Email = '$_SESSION[Email]'";
 			$row = singleRowSQL($sql);
-			echo "<form method='POST' action='./account.php'><b> Email:</b> <input type='email' name='cemail' value='$row[Email]'><br>";
+			echo "<form method='POST' action='./account.php'><b> Email: </b>$row[Email]<br>";
 			echo "<b> Name:</b> $row[FirstName] $row[Surname]<br>";
 			echo "<b> Contact Number:</b> <input type='tel' name='cphone' value='$row[ContactNum]'><br>";
 			echo "<b> Shipping Address:</b> <input type='text' name='cadd' value='$row[ShippingAddress]'><br><br><input type='submit' value='Change Details'><br></form>";

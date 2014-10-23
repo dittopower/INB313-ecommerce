@@ -78,7 +78,6 @@
 					
 					
 					$relatedSQL="SELECT DesignID, File, Name, Price FROM designs WHERE Categories LIKE ";
-					
 					$relatedSQL .= "'%" . $tags[0] . "%'";
 					
 					for($i = 1; count($tags) > $i; $i++){
@@ -102,7 +101,7 @@
 			}
 		}else if(isset($_GET['user'])){
 		
-			$yo = singleSQL("SELECT CONCAT(FirstName,' ', Surname) FROM users WHERE UserID=" . $_GET['user']);
+			$yo = singleSQL("SELECT FirstName FROM users WHERE UserID=" . $_GET['user']);
 			echo "<h1>".$yo."'s Items</h1>";
 			
 			$ayy = multiSQL("SELECT DesignID, File, Name, Price, Available FROM designs WHERE Author=".$_GET['user']." ORDER BY DesignID");
