@@ -46,28 +46,29 @@
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 	<?php
-		$min = singleSQL("SELECT MIN(Price) FROM designs");
-		$max = singleSQL("SELECT MAX(Price) FROM designs");	
-
-		if(($min-10) >=0){
-			$min -= 10;
-		} else { $min = 0; }
+		$mmin = singleSQL("SELECT MIN(Price) FROM designs");
+		$mmax = singleSQL("SELECT MAX(Price) FROM designs");	
 		
-		$max += 10;
+		if(($mmin-10) >=0){
+			$mmin -= 10;
+		} else { $mmin = 0; }
 		
-		$setmin = $min;
-		$setmax = $max;
+		$mmax += 10;
+		
+		$setmin = $mmin;
+		$setmax = $mmax;
 		
 		if(isset($_GET['price'])){
-		
-			$str = $_GET['price'];
-			$str = str_replace("$","",$str);
-			$str = str_replace(" ","",$str);
-			
-			$nums = explode('-', $str);
+			if($_GET['price'] != ""){
+				$str = $_GET['price'];
+				$str = str_replace("$","",$str);
+				$str = str_replace(" ","",$str);
+				
+				$nums = explode('-', $str);
 
-			$setmin = $nums[0];
-			$setmax = $nums[1];
+				$setmin = $nums[0];
+				$setmax = $nums[1];
+			}
 		}
 	
 	?>
@@ -75,8 +76,8 @@
 		$(function() {
 			$( "#slider-range" ).slider({
 				range: true,
-				min: <?php echo $min; ?>,
-				max: <?php echo $max; ?>,
+				min: <?php echo $mmin; ?>,
+				max: <?php echo $mmax; ?>,
 				values: [ <?php echo $setmin; ?>, <?php echo $setmax; ?> ],
 				slide: function( event, ui ) {
 					$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );

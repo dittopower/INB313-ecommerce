@@ -27,9 +27,9 @@
 
 	if(isset($_GET['search'])){
 		$search = mysqli_real_escape_string($mysqli,$_GET['search']);
-		if($_GET['search']=="" && $min==$setmin && $max==$setmax){
-			echo '<h2>Search result for: "' . $search . '"<br>Price range: $'.$setmin.' - $'.$setmax.'</h2>';
-		}else{ echo '<h2>Catalogue</h2>'; }
+		if($_GET['search']=="" && round($setmin)==round($mmin) && round($setmax)==round($mmax)){
+			echo '<h2>Catalogue</h2>';	
+		}else{ echo '<h2>Search result for: "' . $search . '"<br>Price range: $'.$setmin.' - $'.$setmax.'</h2>'; }
 		$ayy = multiSQL("SELECT DesignID, File, Name, Price, Available FROM designs WHERE Price > $setmin AND Price < $setmax AND (Name LIKE '%" . $search . "%' OR Categories LIKE '%" . $search . "%')");
 	}else{ ?>
 	
