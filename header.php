@@ -46,8 +46,8 @@
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 	<?php
-		$min = singleSQL("SELECT MIN(Price) FROM Designs");
-		$max = singleSQL("SELECT MAX(Price) FROM Designs");	
+		$min = singleSQL("SELECT MIN(Price) FROM designs");
+		$max = singleSQL("SELECT MAX(Price) FROM designs");	
 
 		if(($min-10) >=0){
 			$min -= 10;
