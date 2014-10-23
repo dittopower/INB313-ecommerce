@@ -92,6 +92,18 @@
 					
 					echo '<div id="fb"><div class="fb-comments" data-href="http://joshuahenley.com/313/product.php?item='.$id.'" data-width="100%" data-numposts="5" data-colorscheme="light"></div></div>';
 					
+					echo "<script>
+					FB.Event.subscribe('comment.create', comment_callback);
+					FB.Event.subscribe('comment.remove', uncomment_callback);
+					
+					var comment_callback = function(response) {
+							ga('send', 'social', 'facebook', 'comment', $id);
+						}
+					var uncomment_callback = function(response) {
+							ga('send', 'social', 'facebook', 'uncomment', $id);
+						}
+					</script>";
+					
 					echo '<div id="related"><h2>Related Items</h2>';
 					
 					while($rows = mysqli_fetch_array($rel,MYSQLI_BOTH)){
