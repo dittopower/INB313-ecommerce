@@ -63,7 +63,7 @@
 					<script>document.title = "CC3D - '.$row["Name"].'";</script>
 					<a href="./ModelFiles/'. $row['File'] .'" target="_blank"><img src="./ModelFiles/'. $row['File'] .'" id="itemImg"></a>
 					<h2>' . $row["Name"] . ' - $' . sprintf('%0.2f',$row["Price"]) . '</h2>
-					<a href="./product.php?user='.$row['Author'].'">More items by ' . $nameee . '</a><br><br>';
+					<a href="./product.php?user='.$row['Author'].'">More items by "' . $nameee . '"</a><br><br>';
 					
 					echo '<input type="button" value="Add To Cart" onclick="addToCart(' . $id . ');">';
 					if($myemail == $authoremail){ echo '<input type="button" value="Edit Product" onclick="window.location=\'./product.php?item='.$id.'&edit=1\'">'; }
