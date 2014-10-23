@@ -1,25 +1,43 @@
 <?php include 'header.php'; ?>
 <?php include 'navigation.php'; ?>
+
+<div id="nav2">
+	<div id="search"><form class="inline" method="get" action="./"><input type="search" name="search" placeholder="Search by Tags or Names"><input type="submit" value="Search"></div>
+	<div id="filter" >
+
+		  <div id="test">Price range:</div>
+		  <input type="text" name="price" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+		 
+		<div id="slider-range"></div>
+		
+	</div>
+	
+	</form>
+	<div class="clear"></div><br>
+	
+</div>
+
 <div id="middleContainer"><div id="middle">
 
 <!-- CONTENT START -->
-	
+
 <?php 
 
 	$ban = singlerowSQL("SELECT File, DesignID, Name, Price FROM designs ORDER BY RAND() LIMIT 1");
 
 	if(isset($_GET['search'])){
 		$search = mysqli_real_escape_string($mysqli,$_GET['search']);
-		echo '<h2>Search result for: ' . $search . '</h2>';
-		$ayy = multiSQL("SELECT DesignID, File, Name, Price, Available FROM designs WHERE Name LIKE '%" . $search . "%' OR Categories LIKE '%" . $search . "%'");
+		if($_GET['search']=="" && $min==$setmin && $max==$setmax){
+			echo '<h2>Search result for: "' . $search . '"<br>Price range: $'.$setmin.' - $'.$setmax.'</h2>';
+		}else{ echo '<h2>Catalogue</h2>'; }
+		$ayy = multiSQL("SELECT DesignID, File, Name, Price, Available FROM designs WHERE Price > $setmin AND Price < $setmax AND (Name LIKE '%" . $search . "%' OR Categories LIKE '%" . $search . "%')");
 	}else{ ?>
 	
 		<div id="banner">
 			<img id="main" src="./ModelFiles/<?php echo $ban['File']; ?>">
 			<img class="blur" id="left" src="./ModelFiles/<?php echo $ban['File']; ?>">
 			<img class="blur" id="right" src="./ModelFiles/<?php echo $ban['File']; ?>">
-			
-			<center><h2><a href="./product.php?item=<?php echo $ban['DesignID'] . "\">" . $ban['Name'] . " - $" . sprintf('%0.2f',$ban['Price']); ?></a></h2></center>
+			<div id="text"><a href="./product.php?item=<?php echo $ban['DesignID'] . "\">" . $ban['Name'] . " - $" . sprintf('%0.2f',$ban['Price']); ?></a></div>
 		</div>
 
 	<?php
@@ -32,9 +50,10 @@
 		echo '<div class="text">' . $rows["Name"] . ' - $' . sprintf('%0.2f',$rows["Price"]) . '</div>';
 		echo '<img src="./ModelFiles/'. $rows["File"] .'"></div></a>';
 	}
-?>
 	
-	<div class="clear"></div>
+	?>
+	
+<div class="clear"></div>
 
 <!-- CONTENT END -->
 

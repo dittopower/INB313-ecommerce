@@ -59,7 +59,7 @@
 			echo "<form method='POST' action='./account.php'><b> Email:</b> <input type='email' name='cemail' value='$row[Email]'><br>";
 			echo "<b> Name:</b> $row[FirstName] $row[Surname]<br>";
 			echo "<b> Contact Number:</b> <input type='tel' name='cphone' value='$row[ContactNum]'><br>";
-			echo "<b> Shipping Address:</b> <input type='text' name='cadd' value='$row[ShippingAddress]'><br><input type='submit' value='Change Details'><br></form>";
+			echo "<b> Shipping Address:</b> <input type='text' name='cadd' value='$row[ShippingAddress]'><br><br><input type='submit' value='Change Details'><br></form>";
 		?>
 	</div>
 	
@@ -71,7 +71,7 @@
 			<input name='word2' type='password' placeholder='New Password'>
 			<input name='word3' type='password' placeholder='Repeat New Password'><br>
 			<?php if ($match){echo "New Passwords Don't Match.<br>";} ?>
-			<input type='submit' value='Change'>
+			<br><input type='submit' value='Change'>
 		</form>
 	</div>
 	<hr>

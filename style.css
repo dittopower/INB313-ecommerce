@@ -1,3 +1,7 @@
+html{
+	overflow-y:scroll;
+}
+
 body{
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
@@ -32,24 +36,35 @@ textarea{
 }
 
 	#nav2{
-		width:  calc(100% - 10px);
-		padding: 15px 5px 0 5px;
+		width:  1100px;
+		margin: auto;
+		padding: 15px 20px 0 20px;
 		text-align:center;
+		background: #eee;
 	}
 	
-		#loginInfo{
-			float: right;
-			font-size: 0.6em;
-		}
-		
-		#search{
-			float:left;
+		#test{
+			display: inline;
+			font-size: 14px;
 		}
 		
 		#filter{
+			font-size: 15px;
+			text-align:center;
 			font-size: 0.5em;
+			float:left;
 		}
-	
+		
+		#search{
+			float:right;
+			margin-bottom: 0;
+		}
+		
+		#amount{
+			width:auto;
+			background: #eee;
+		}
+
 	.inline{
 		display: inline;
 	}
@@ -60,7 +75,7 @@ textarea{
 		display: inline;
 	}
 	
-	#navbar a{
+	#navbar a, #nav2 a{
 		color: black;
 		text-decoration: none;
 	}
@@ -76,32 +91,39 @@ textarea{
 		padding: 10px;
 	}
 	
-	#navbar form{
-		margin-bottom: 0;
-	}
+
 
 #middleContainer{
 	margin: auto;
-	background: #d0d0d0;
+	background: #eee;
 	width: 1100px;
-	padding: 10px;
-	margin-top: 10px;
+	padding: 20px;
 	position: relative;
 }
 
 	#banner{
 		width: 100%;
-		height: 400px;
+		height: 310px;
 		position: relative;
 	}
 	
-		#banner h2{
+		#banner #text{
+			background: #222;
+			width: 100%;
+			text-align:center;
 			font-weight: 900;
 			letter-spacing: 4px;
+			z-index: 9;
+			position: absolute;
+			bottom: 0px;
+			color: white;
+			padding: 10px 0 10px 0;
+			opacity: 0.95;
+			filter: alpha(opacity=95); /* For IE8 and earlier */
 		}
 	
 		#banner a{
-			color:black;
+			color:white;
 			text-decoration: none;
 			font-size: 1.5em;
 			font-weight: bold;
@@ -109,21 +131,23 @@ textarea{
 	
 		#banner img{
 			width: 520px;
-			/*height: 300px;*/
+			height:100%;
 		}
 	
 		#banner #main{
 			position: absolute;
 			right: 260px;
-			z-index: 5;
+			z-index: 8;
 		}
 		
 		#banner #right{
 			float:right;
+			overflow: hidden;
 		}
 				
 		#banner #left{
 			float:left;
+			overflow: hidden;
 		}
 		
 		.blur{
@@ -139,7 +163,7 @@ textarea{
 	.gridItem{
 		position: relative;
 		width: 216px;
-		height: 216px;
+		height: 162px;
 		background: rgba(0,0,0,0.2);
 		border: 1px solid black;
 		margin: 1px;
@@ -149,7 +173,7 @@ textarea{
 	
 	.gridItem img{
 		width: 100%;
-		/*height: 100%;*/
+		height: 100%;
 	}
 	
 	.text{
@@ -159,10 +183,9 @@ textarea{
 		position: absolute;
 		top: 0;
 		left: 0;
-		opacity: 0.6;
-		filter: alpha(opacity=60); /* For IE8 and earlier */
-		background: black;
+		background-color:rgba(0,0,0,0.6);
 		color: white;
+		padding: 3px 0 3px 0;
 	}
 	
 	#middleContainer a{
@@ -227,7 +250,7 @@ textarea{
 		
 			.third img{
 				width: 100%;
-				/*height: 100%;*/
+				height: 100%;
 			}
 	
 #cart{
@@ -294,8 +317,24 @@ textarea{
 	
 #footer{
 	border-top: 1px dashed #222;
-	background: #d0d0d0;
+	background: #eee;
 	width: 1100px;
 	margin: auto;
-	padding: 10px;
+	padding: 20px;
+	margin-bottom: 50px;
 }
+
+		#loginInfo{
+			float: right;
+			font-size: 1em;
+		}
+		
+		#loginInfo a{
+			color: black;
+			text-decoration: none;
+		}
+
+		#loginInfo a:hover{
+			color: black;
+			text-decoration: underline;
+		}
