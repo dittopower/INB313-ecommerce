@@ -55,6 +55,8 @@
 						}
 					
 				}else{
+					$tags = explode(',', $row["Categories"]);
+					
 					echo '
 					<script>document.title = "CC3D - '.$row["Name"].'";</script>
 					<a href="./ModelFiles/'. $row['File'] .'" target="_blank"><img src="./ModelFiles/'. $row['File'] .'" id="itemImg"></a>
@@ -62,13 +64,18 @@
 					<p>
 						Material: ' . $materialName . '<br><br>
 						'. $row["Description"] .'<br><br>
-						Tags: ' . $row["Categories"] . '
-					</p>
+						Tags: ';
+						
+					foreach($tags as $mytag){
+						$ytag = trim($mytag);
+						echo "<a href='/?search=$ytag'>$ytag</a> ";
+					}
+					
+					echo '</p>
 					<input type="button" value="Add To Cart" onclick="addToCart(' . $id . ');">';
 					if($myemail == $authoremail){ echo '<input type="button" value="Edit Product" onclick="window.location=\'./product.php?item='.$id.'&edit=1\'">'; }
 					echo '<br><br><a href="./product.php?user='.$row['Author'].'">More items by this user</a><div class="clear"></div>';
 					
-					$tags = explode(',', $row["Categories"]);
 					
 					$relatedSQL="SELECT DesignID, File, Name, Price FROM designs WHERE Categories LIKE ";
 					
