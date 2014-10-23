@@ -24,16 +24,16 @@
 
 <?php 
 
-	$ban = singlerowSQL("SELECT File, DesignID, Name, Price FROM designs ORDER BY RAND() LIMIT 1");
-
 	if(isset($_GET['search'])){
 		$search = mysqli_real_escape_string($mysqli,$_GET['search']);
 		if($_GET['search']=="" && round($setmin)==round($mmin) && round($setmax)==round($mmax)){
 			echo '<h2>Catalogue</h2>';	
 		}else{ echo '<h2>Search result for: "' . $search . '"<br>Price range: $'.$setmin.' - $'.$setmax.'</h2>'; }
 		$ayy = multiSQL("SELECT DesignID, File, Name, Price, Available FROM designs WHERE Price > $setmin AND Price < $setmax AND (Name LIKE '%" . $search . "%' OR Categories LIKE '%" . $search . "%')");
-	}else{ ?>
+	}else{ 
 	
+		$ban = singlerowSQL("SELECT File, DesignID, Name, Price FROM designs ORDER BY RAND() LIMIT 1"); ?>
+		
 		<div id="banner">
 			<img id="main" src="./ModelFiles/<?php echo $ban['File']; ?>">
 			<img class="blur" id="left" src="./ModelFiles/<?php echo $ban['File']; ?>">
