@@ -92,7 +92,7 @@
 		while($rows = mysqli_fetch_array($ayy,MYSQLI_BOTH)){
 			echo "<tr>";
 			echo "<td>Order #" . $rows['OrderID'] . "</td>";
-			echo "<td>$" . sprintf('%0.2f',$rows['OrderCost']) . " + $".$shipping." Shipping</td>";
+			echo "<td><strong>$" . sprintf('%0.2f',$rows['OrderCost']+$shipping) . "</strong> ($".sprintf('%0.2f',$rows['OrderCost'])." + $".$shipping." Shipping)</td>";
 			echo "<td>";
 			
 			$items = explode(' ', $rows['ItemsOrdered']);
@@ -104,7 +104,9 @@
 			}
 			
 			echo "</td>";
-			echo "<td>" . $rows['DateOrdered'] . "</td>";
+			$time = strtotime($rows['DateOrdered']);
+			$newformat = date('d F Y (H:i:s)',$time);
+			echo "<td>" . $newformat . "</td>";
 			echo "<td>" . $rows['Status'] . "</td>";
 			echo "</tr>";
 		}
