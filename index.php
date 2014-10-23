@@ -3,7 +3,7 @@
 
 <div id="nav2">
 	<div id="smaller">
-		<div id="search"><form class="inline" method="get" action="./"><input type="search" name="search" placeholder="Search by Tags or Names"><input type="submit" value="Search"></div>
+		<div id="search"><form class="inline" method="get" action="./"><input type="search" name="search" placeholder="Search by Tags or Names" value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>"><input type="submit" value="Search"></div>
 		<div id="filter" >
 
 			  <div id="test">Price range:</div>
