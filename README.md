@@ -3,4 +3,5 @@ INB313
 
 Ecommerce website
 
-swag
+---------------------------------------------------------------
+Clone of the original: https://github.com/ravvle/INB313
