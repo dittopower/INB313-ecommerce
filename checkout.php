@@ -41,7 +41,7 @@
 				<input type="hidden" name="item_name" value="CC3D - Order '. $orderid .'">
 				<input type="hidden" name="currency_code" value="AUD">
 				<input type="hidden" name="amount" value="' . ($total + $shipping) . '">
-				<input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it\'s fast, free and secure!">
+				<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it\'s fast, free and secure!">
 				</form></center>';
 				
 				 echo "<script>silresetCart(); ga('send', 'event', 'checkout', 'pay', 'paymentmade', $total);</script>";

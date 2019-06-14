@@ -1,5 +1,5 @@
 <div id="footer">
-	&copy; <span onclick="location='http://imgur.com/search?q=cute+cat'">Joshua</span> Henley, <span onclick="location='http://www.chromeexperiments.com/'">Damon</span> Jones, <span onclick="location='./images/EE.png?Easter_Egg=Best_Site_Ever'">Chris</span> Litherland, Iain Nicholas
+	&copy; <span onclick="location='https://imgur.com/search?q=cute+cat'">Joshua</span> Henley, <span onclick="location='https://www.chromeexperiments.com/'">Damon</span> Jones, <span onclick="location='./images/EE.png?Easter_Egg=Best_Site_Ever'">Chris</span> Litherland, Iain Nicholas
 
 	<div id="loginInfo">
 

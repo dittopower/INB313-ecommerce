@@ -44,13 +44,13 @@
 	<TITLE>CC3D</TITLE>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="shortcut icon" href="./images/cc3d.ico">
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,900' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,900' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="./jquery/jquery-ui.css">
   
-	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<script src="./jquery/jquery-latest.min.js" type="text/javascript"></script>
+	<script src="./jquery/jquery-ui.min.js"></script>
 	
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 	<?php
 		$mmin = singleSQL("SELECT MIN(Price) FROM designs");
 		$mmax = singleSQL("SELECT MAX(Price) FROM designs");	
