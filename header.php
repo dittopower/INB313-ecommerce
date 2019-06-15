@@ -48,7 +48,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/jquery/jquery-ui.css">
   
-	<script src="./jquery/jquery-latest.min.js" type="text/javascript"></script>
+	<script src="/jquery/jquery-latest.min.js" type="text/javascript"></script>
 	<script src="./jquery/jquery-ui.min.js"></script>
 	
 	<?php
