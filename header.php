@@ -46,7 +46,7 @@
 	<link rel="shortcut icon" href="./images/cc3d.ico">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,900' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="./jquery/jquery-ui.css">
+	<link rel="stylesheet" href="/jquery/jquery-ui.css">
   
 	<script src="./jquery/jquery-latest.min.js" type="text/javascript"></script>
 	<script src="./jquery/jquery-ui.min.js"></script>
